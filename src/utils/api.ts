@@ -1,12 +1,4 @@
 import axios from 'axios';
-import { ComparisonCoin } from '../components/ClientApp';
-
-const COIN_IDS = {
-  doge: 'dogecoin',
-  shiba: 'shiba-inu',
-  pepe: 'pepe',
-  usd: 'usd'
-};
 
 export async function fetchCryptoData(coinId: string, days: number = 7) {
   if (coinId === 'usd') {
@@ -30,8 +22,4 @@ export async function fetchCryptoData(coinId: string, days: number = 7) {
     console.error(`Error fetching ${coinId} data:`, error);
     throw new Error(`Failed to fetch ${coinId} data. CoinGecko API might be rate limited.`);
   }
-}
-
-export function getCoinId(comparison: ComparisonCoin): string {
-  return COIN_IDS[comparison] || COIN_IDS.doge;
 }

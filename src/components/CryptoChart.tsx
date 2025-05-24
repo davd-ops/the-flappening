@@ -2,12 +2,14 @@ import React, { useState, useEffect } from 'react';
 import { LineChart, Line, XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContainer } from 'recharts';
 import { format } from 'date-fns';
 import { ArrowUpIcon, ArrowDownIcon } from 'lucide-react';
-import { fetchCryptoData, getCoinId } from '../services/cryptoService';
+import { fetchCryptoData } from '../utils/api';
+import { getCoinId } from '../utils/helper';
 import { TimeRangeSelector } from './TimeRangeSelector';
 import { formatMarketCap, calculatePercentChange, calculateXMultiplier, formatXMultiplier, formatPrice } from '../utils/formatters';
-import { ComparisonCoin } from './ClientApp';
+import { ComparisonCoin } from '../utils/helper';
 
-type TimeRange = '30d' | '90d' | '180d' | '365d';
+type TimeRange = '30d' | '90d';
+// type TimeRange = '30d' | '90d' | '180d' | '365d';
 
 const COIN_COLORS = {
   doge: 'bg-secondary-jasmine/20',
@@ -55,10 +57,11 @@ const CryptoChart: React.FC<CryptoChartProps> = ({ selectedCoin }) => {
         setError(null);
         
         const days = 
-          timeRange === '30d' ? 30 : 
-          timeRange === '90d' ? 90 : 
-          timeRange === '180d' ? 180 : 
-          timeRange === '365d' ? 365 : 90;
+          timeRange === '30d' ? 30 : 90;
+          // timeRange === '30d' ? 30 : 
+          // timeRange === '90d' ? 90 : 
+          // timeRange === '180d' ? 180 : 
+          // timeRange === '365d' ? 365 : 90;
         
         const [penguData, comparisonData] = await Promise.all([
           fetchCryptoData('pudgy-penguins', days),

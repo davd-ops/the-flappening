@@ -3,8 +3,7 @@
 import React, { useState } from 'react';
 import CryptoChart from './CryptoChart';
 import { ComparisonSelector } from './ComparisonSelector';
-
-export type ComparisonCoin = 'doge' | 'shiba' | 'pepe' | 'usd';
+import { ComparisonCoin } from '../utils/helper';
 
 export default function ClientApp() {
   const [selectedCoin, setSelectedCoin] = useState<ComparisonCoin>('doge');

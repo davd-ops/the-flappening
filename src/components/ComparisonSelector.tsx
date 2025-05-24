@@ -1,5 +1,5 @@
 import React from 'react';
-import { ComparisonCoin } from './ClientApp';
+import { ComparisonCoin } from '../utils/helper';
 
 interface ComparisonSelectorProps {
   selectedCoin: ComparisonCoin;

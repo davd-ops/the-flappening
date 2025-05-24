@@ -6,6 +6,13 @@ A real-time dashboard tracking PENGU's journey to become the world's leading mem
 
 Built and maintained by $PENGU community. Any and all contributors are welcome.
 
+## Features
+- Market cap comparisons with major memecoins
+- Interactive chart with customizable time ranges
+- Automatic hourly updates via CoinGecko API
+- Heavy caching of all requests to minimize load times and save on costs
+- Responsive design for all devices
+
 ### Ideas for additional features
 - Holder count chart comparisons
 - Transaction count chart comparisons
@@ -57,6 +64,10 @@ npm run dev
 
 - `pnpm dev` - Start the development server
 - `pnpm build` - Build the application for production
+
+### Styles
+
+Styles across the project are inspired by [Brand Bible](https://media.pudgypenguins.com/brand-builders)
 
 ### License
 

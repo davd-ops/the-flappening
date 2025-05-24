@@ -17,6 +17,7 @@ Built and maintained by $PENGU community. Any and all contributors are welcome.
 - Holder count chart comparisons
 - Transaction count chart comparisons
 - Engagement/social chart comparisons
+- Include The Flappening for NFTs too?
 
 ## Inspiration
 

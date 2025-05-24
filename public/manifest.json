@@ -1,0 +1,21 @@
+{
+  "name": "The Flappening",
+  "short_name": "Flappening",
+  "description": "Track PENGU's journey to become the world's leading memecoin by market cap",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#ffffff",
+  "theme_color": "#477dfd",
+  "icons": [
+    {
+      "src": "/pengu_hexagon.png",
+      "sizes": "192x192",
+      "type": "image/png"
+    },
+    {
+      "src": "/pengu_hexagon.png",
+      "sizes": "512x512",
+      "type": "image/png"
+    }
+  ]
+}

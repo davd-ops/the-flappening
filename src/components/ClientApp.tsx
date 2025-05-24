@@ -46,15 +46,7 @@ export default function ClientApp() {
           <div className="flex flex-col items-center gap-2">
             <p className="text-[20px] sm:text-[28px] font-menco text-primary-oxford/60 text-center">
               © 2025 The Flappening.{' '}
-              Built by{' '}
-              <a 
-                href="https://x.com/davidbailey_eth" 
-                target="_blank" 
-                rel="noopener noreferrer" 
-                className="text-primary-crayola hover:text-primary-crayola/80 transition-colors"
-              >
-                David Bailey
-              </a>
+              Built by $PENGU community
             </p>
             <p className="text-[16px] sm:text-[20px] font-menco text-primary-oxford/60 text-center">
               Market cap data shown for informational purposes only.

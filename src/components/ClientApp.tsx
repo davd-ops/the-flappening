@@ -35,7 +35,13 @@ export default function ClientApp() {
               The Flappening tracks PENGU's journey to become the world's leading memecoin by market cap. Watch in real-time as PENGU's market value approaches and potentially surpasses the biggest memecoins like DOGE, SHIBA, and PEPE.
             </p>
             <p className="text-[20px] sm:text-[28px] font-menco text-primary-oxford/80">
-              Use the time range selector above the chart to view different time periods, or choose a different coin for comparison. All market data is automatically updated every hour via CoinGecko.
+              Use the time range selector above the chart to view different time periods, or choose a different coin for comparison. All market data is automatically updated every hour via CoinGecko. For more PENGU fundamentals, visit{' '}
+              <a 
+                href="https://pengu.pudgypenguins.com/" 
+                target="_blank" 
+                rel="noopener noreferrer"
+                className="text-primary-oxford hover:text-primary-oxford/80 underline"
+              >pengu.pudgypenguins.com</a>.
             </p>
           </div>
         </div>

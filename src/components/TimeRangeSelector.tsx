@@ -12,7 +12,7 @@ export const TimeRangeSelector: React.FC<TimeRangeSelectorProps> = ({
   onChange,
   disabled = false
 }) => {
-  const ranges: TimeRange[] = ['30d', '90d'];
+  const ranges: TimeRange[] = ['30d', '90d', '180d'];
   
   return (
     <div className="flex items-center space-x-1 bg-primary-sky/5 rounded-lg p-1">

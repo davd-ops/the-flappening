@@ -8,7 +8,7 @@ import { TimeRangeSelector } from './TimeRangeSelector';
 import { formatMarketCap, calculatePercentChange, calculateXMultiplier, formatXMultiplier, formatPrice } from '../utils/formatters';
 import { ComparisonCoin } from '../utils/helper';
 
-type TimeRange = '30d' | '90d';
+type TimeRange = '30d' | '90d' | '180d';
 // type TimeRange = '30d' | '90d' | '180d' | '365d';
 
 const COIN_COLORS = {
@@ -57,10 +57,10 @@ const CryptoChart: React.FC<CryptoChartProps> = ({ selectedCoin }) => {
         setError(null);
         
         const days = 
-          timeRange === '30d' ? 30 : 90;
-          // timeRange === '30d' ? 30 : 
-          // timeRange === '90d' ? 90 : 
-          // timeRange === '180d' ? 180 : 
+          // timeRange === '30d' ? 30 : 90;
+          timeRange === '30d' ? 30 : 
+          timeRange === '90d' ? 90 : 
+          timeRange === '180d' ? 180 : 90
           // timeRange === '365d' ? 365 : 90;
         
         const [penguData, comparisonData] = await Promise.all([
@@ -140,6 +140,18 @@ const CryptoChart: React.FC<CryptoChartProps> = ({ selectedCoin }) => {
     );
   };
 
+  const getXAxisInterval = () => {
+    if (typeof window !== 'undefined') {
+      const screenWidth = window.innerWidth;
+      if (screenWidth < 640) {
+        return Math.floor(chartData.length / 6); // ~6 ticks on mobile
+      } else if (screenWidth < 1024) {
+        return Math.floor(chartData.length / 10); // ~10 ticks on tablet
+      }
+    }
+    return Math.floor(chartData.length / 12); // ~12 ticks on desktop
+  };
+
   // leave 10% buffer on Y-axis
   const getYAxisDomain = () => {
     if (!chartData.length) return [0, 1];
@@ -193,7 +205,6 @@ const CryptoChart: React.FC<CryptoChartProps> = ({ selectedCoin }) => {
         </h2>
       </div>
       
-      {/* Desktop: Flappening text and time selector on same line */}
       <div className="hidden sm:flex items-center justify-between mb-6">
         <p className="text-[36px] md:text-[46px] font-tt-trailers text-primary-oxford">
           {isLoading ? (
@@ -209,7 +220,6 @@ const CryptoChart: React.FC<CryptoChartProps> = ({ selectedCoin }) => {
         />
       </div>
       
-      {/* Mobile: Flappening text below title */}
       <div className="sm:hidden mb-2">
         <p className="text-[20px] font-tt-trailers text-primary-oxford">
           {isLoading ? (
@@ -220,7 +230,6 @@ const CryptoChart: React.FC<CryptoChartProps> = ({ selectedCoin }) => {
         </p>
       </div>
       
-      {/* Mobile: Time selector in its own container */}
       <div className="sm:hidden flex justify-end mb-4">
         <TimeRangeSelector 
           timeRange={timeRange} 
@@ -229,7 +238,6 @@ const CryptoChart: React.FC<CryptoChartProps> = ({ selectedCoin }) => {
         />
       </div>
       
-      {/* Market cap cards - now in a 2-column grid on all screen sizes */}
       <div className="grid grid-cols-2 gap-2 sm:gap-4 mb-4 sm:mb-6">
         <div className="bg-primary-sky/10 p-2 sm:p-4 rounded-lg">
           <div className="flex justify-between items-center">
@@ -280,7 +288,7 @@ const CryptoChart: React.FC<CryptoChartProps> = ({ selectedCoin }) => {
                 tick={{ fill: '#00142d', fontFamily: 'Menco', fontSize: 12 }} 
                 tickLine={{ stroke: '#00142d' }}
                 axisLine={{ stroke: '#00142d' }}
-                interval={Math.floor(chartData.length / 12)}
+                interval={getXAxisInterval()}
               />
               <YAxis 
                 dataKey="xMultiplier"
@@ -293,8 +301,8 @@ const CryptoChart: React.FC<CryptoChartProps> = ({ selectedCoin }) => {
                 reversed={true}
                 ticks={(() => {
                   const [min, max] = getYAxisDomain();
-                  const step = (max - min) / 8; // Show 9 ticks (8 intervals)
-                  return Array.from({ length: 9 }, (_, i) => min + step * i);
+                  const step = (max - min) / 6; // show 7 ticks (6 intervals)
+                  return Array.from({ length: 7 }, (_, i) => min + step * i);
                 })()}
               />
               <Tooltip 

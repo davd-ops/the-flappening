@@ -1,5 +1,5 @@
 export type ComparisonCoin = 'doge' | 'shiba' | 'pepe' | 'usd';
-export type TimeRange = '30d' | '90d';
+export type TimeRange = '30d' | '90d' | '180d';
 // export type TimeRange = '30d' | '90d' | '180d' | '365d';
 
 const COIN_IDS = {
